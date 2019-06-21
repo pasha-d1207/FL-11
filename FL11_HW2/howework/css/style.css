@@ -185,8 +185,7 @@
         background: white;
         color: lightblue;
         border-radius: 0;
-        width: 250px;
-        height: 50px;
+        padding: 20px 70px;
     }
 
     .contact-form > button:hover {
