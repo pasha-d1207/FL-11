@@ -1,5 +1,6 @@
 body {
-  background: #ffffff; }
+  background: #ffffff;
+  margin: 0; }
 
 .header-wrap {
   background: url(../img/m-h-day.jpg) no-repeat;

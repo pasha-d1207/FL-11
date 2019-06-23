@@ -1,5 +1,6 @@
 body {
-  background: #262832; }
+  background: #262832;
+  margin: 0; }
 
 .header-wrap {
   background: url(../img/m-h-night.jpg) no-repeat;
