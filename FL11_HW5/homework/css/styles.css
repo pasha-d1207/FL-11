@@ -115,6 +115,10 @@ picture {
 }
 /* main */
 
+.page-section {
+  width: 75%;
+}
+
 .page-main,
 .wrap-post {
   display: flex;
@@ -238,9 +242,6 @@ aside.page-aside {
     font-size: 40px;
   }
 
-  .page-section {
-    width: 75%;
-  }
 }
 @media screen and (max-width: 768px) {
   html,
