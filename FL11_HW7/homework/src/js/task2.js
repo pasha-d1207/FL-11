@@ -1,12 +1,14 @@
 let startGame = confirm('Do you want to play a game?');
+let maxRound = 100000;
+let maxGame = 100000;
 
-for (let game = 1; game < Infinity; game++) {
+for (let game = 1; game < maxGame; game++) {
     let price = 0;
     let max = 4;
     let stepPockets = 4;
     let win = false;
     let round = 1;
-    for (round; round < Infinity; round++) {
+    for (round; round < maxRound; round++) {
         let possiblePrise = 100;
         let attempt = 3;
         max = max + stepPockets;
@@ -27,9 +29,10 @@ Possible prize on current attempt: ${possiblePrise}$`);
                     alert(`Thank you for your participation. Your prize is: ${price}$`);
                     let again = confirm('Do you want to play again?');
                     if (again === true) {
-                        window.location.reload();
-                        break;
+                        round = maxRound++;
+                        continue;
                     } else {
+                        game = maxGame++;
                         break;
                     }
                 }
@@ -49,9 +52,10 @@ Possible prize on current attempt: ${possiblePrise}$`);
                         alert(`Thank you for your participation. Your prize is: ${price}$`);
                         let again = confirm('Do you want to play again?');
                         if (again === true) {
-                            window.location.reload();
-                            break;
+                            round = maxRound++;
+                            continue;
                         } else {
+                            game = maxGame++;
                             break;
                         }
                     }
@@ -72,9 +76,10 @@ Do you want to continue?`);
                             alert(`Thank you for your participation. Your prize is: ${price}$`);
                             let again = confirm('Do you want to play again?');
                             if (again === true) {
-                                window.location.reload();
-                                break;
+                                round = maxRound++;
+                                continue;
                             } else {
+                                game = maxGame++;
                                 break;
                             }
                         }
@@ -82,9 +87,10 @@ Do you want to continue?`);
                         alert('Thank you for your participation. Your prize is: 0$');
                         let again = confirm('Do you want to play again?');
                         if (again === true) {
-                            window.location.reload();
-                            break;
+                            round = maxRound++;
+                            continue;
                         } else {
+                            game = maxGame++;
                             break;
                         }
                     }
@@ -92,8 +98,8 @@ Do you want to continue?`);
             }
         } else {
             alert('You did not become a billionaire, but can.');
+            game = maxGame++;
             break;
         }
-
-    } break;
+    }
 } 
