@@ -1,193 +1,95 @@
 let price = 0;
-let possiblePrise = 100;
 let startPrice = 100;
-let startAttempt = 3;
-let attempt = 3;
-let max = 8;
+let max = 4;
 let stepPockets = 4;
 let win = false;
-let round = 2;
+let round = 1;
 
 let startGame = confirm('Do you want to play a game?');
-let pocket = parseInt(Math.random() * max);
 
-if (startGame === true) {
-    let inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
-Attempts left: ${attempt}
-Total price: 0$
-Possible prize on current attempt: ${possiblePrise}$`);
-    if (inputPocket === pocket) {
-        price += possiblePrise;
-        win = confirm(`Congratulation, you won!   Your prize is: ${price}$. Do you want to continue?`);
-        max = max + stepPockets;
-        attempt = startAttempt;
-        if (win === true) {
-            if (startGame === true) {
-                possiblePrise *= round;
-                let inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
-Attempts left: ${attempt}
-Total price: ${price}$
-Possible prize on current attempt: ${possiblePrise}$`);
-                if (inputPocket === pocket) {
-                    price += possiblePrise;
-                    win = confirm(`Congratulation, you won!   Your prize is: ${price}$. Do you want to continue?`);
-                } else {
-                    attempt--;
-                    possiblePrise /= attempt;
-                    inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
-Attempts left: ${attempt}
-Total price: ${price}$
-Possible prize on current attempt: ${possiblePrise}$`);
-                    if (inputPocket === pocket) {
-                        price += possiblePrise;
-                        win = confirm(`Congratulation, you won!   Your prize is: ${price}$. Do you want to continue?`);
-                    } else {
-                        possiblePrise /= attempt;
-                        attempt--;
-                        inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
-Attempts left: ${attempt}
-Total price: ${price}$
-Possible prize on current attempt: ${possiblePrise}$`);
-                        if (inputPocket === pocket) {
-                            price += possiblePrise;
-                            win = confirm(`Congratulation, you won!   Your prize is: ${price}$.
-Do you want to continue?`);
-                        } else {
-                            alert('Thank you for your participation. Your prize is: 0$');
-                            confirm('Do you want to play again?');
-                        }
-                    }
-                }
-            } else {
-                alert('You did not become a billionaire, but can.');
-            }
-        } else {
-            alert(`Thank you for your participation. Your prize is: ${price}$`);
-            confirm('Do you want to play again?');
-        }
-    } else {
-        attempt--;
-        possiblePrise /= attempt;
-        inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
+for (round; round < Infinity; round++) {
+    let possiblePrise = 100;
+    let attempt = 3;
+    max = max + stepPockets;
+    let pocket = parseInt(Math.random() * max);
+    console.log(pocket)
+    if (startGame === true) {
+        possiblePrise *= round;
+        let inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
 Attempts left: ${attempt}
 Total price: ${price}$
 Possible prize on current attempt: ${possiblePrise}$`);
         if (inputPocket === pocket) {
-            price = possiblePrise;
+            price += possiblePrise;
             win = confirm(`Congratulation, you won!   Your prize is: ${price}$. Do you want to continue?`);
-            max = max + stepPockets;
-            attempt = startAttempt;
             if (win === true) {
-                if (startGame === true) {
-                    possiblePrise = startPrice;
-                    possiblePrise *= round;
-                    let inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
-Attempts left: ${attempt}
-Total price: ${price}$
-Possible prize on current attempt: ${possiblePrise}$`);
-                    if (inputPocket === pocket) {
-                        price += possiblePrise;
-                        win = confirm(`Congratulation, you won!   Your prize is: ${price}$. Do you want to continue?`);
-                    } else {
-                        attempt--;
-                        possiblePrise /= attempt;
-                        inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
-Attempts left: ${attempt}
-Total price: ${price}$
-Possible prize on current attempt: ${possiblePrise}$`);
-                        if (inputPocket === pocket) {
-                            price += possiblePrise;
-                            win = confirm(`Congratulation, you won!   Your prize is: ${price}$. 
-Do you want to continue?`);
-                        } else {
-                            possiblePrise /= attempt;
-                            attempt--;
-                            inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
-Attempts left: ${attempt}
-Total price: ${price}$
-Possible prize on current attempt: ${possiblePrise}$`);
-                            if (inputPocket === pocket) {
-                                price += possiblePrise;
-                                win = confirm(`Congratulation, you won!   Your prize is: ${price}$.
-Do you want to continue?`);
-                            } else {
-                                alert('Thank you for your participation. Your prize is: 0$');
-                                confirm('Do you want to play again?');
-                            }
-                        }
-                    }
-                } else {
-                    alert('You did not become a billionaire, but can.');
-                }
+                continue;
             } else {
                 alert(`Thank you for your participation. Your prize is: ${price}$`);
-                confirm('Do you want to play again?');
+                let again = confirm('Do you want to play again?');
+                if (again === true) {
+                    break;
+                } else {
+                    break;
+                }
             }
         } else {
-            possiblePrise /= attempt;
             attempt--;
+            possiblePrise /= attempt;
             inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
 Attempts left: ${attempt}
 Total price: ${price}$
 Possible prize on current attempt: ${possiblePrise}$`);
             if (inputPocket === pocket) {
-                price = possiblePrise;
+                price += possiblePrise;
                 win = confirm(`Congratulation, you won!   Your prize is: ${price}$. Do you want to continue?`);
-                max = max + stepPockets;
-                attempt = startAttempt;
-                possiblePrise = startPrice;
                 if (win === true) {
-                    if (startGame === true) {
-                        possiblePrise *= round;
-                        let inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
-Attempts left: ${attempt}
-Total price: ${price}$
-Possible prize on current attempt: ${possiblePrise}$`);
-                        if (inputPocket === pocket) {
-                            price += possiblePrise;
-                            win = confirm(`Congratulation, you won!   Your prize is: ${price}$. 
-Do you want to continue?`);
-                        } else {
-                            attempt--;
-                            possiblePrise /= attempt;
-                            inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
-Attempts left: ${attempt}
-Total price: ${price}$
-Possible prize on current attempt: ${possiblePrise}$`);
-                            if (inputPocket === pocket) {
-                                price += possiblePrise;
-                                win = confirm(`Congratulation, you won!   Your prize is: ${price}$. 
-Do you want to continue?`);
-                            } else {
-                                possiblePrise /= attempt;
-                                attempt--;
-                                inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
-Attempts left: ${attempt}
-Total price: ${price}$
-Possible prize on current attempt: ${possiblePrise}$`);
-                                if (inputPocket === pocket) {
-                                    price += possiblePrise;
-                                    win = confirm(`Congratulation, you won!   Your prize is: ${price}$.
-Do you want to continue?`);
-                                } else {
-                                    alert('Thank you for your participation. Your prize is: 0$');
-                                    confirm('Do you want to play again?');
-                                }
-                            }
-                        }
-                    } else {
-                        alert('You did not become a billionaire, but can.');
-                    }
+                    continue;
                 } else {
                     alert(`Thank you for your participation. Your prize is: ${price}$`);
-                    confirm('Do you want to play again?');
-                } 
+                    let again = confirm('Do you want to play again?');
+                    if (again === true) {
+                        break;
+                    } else {
+                        break;
+                    }
+                }
             } else {
-                alert('Thank you for your participation. Your prize is: 0$');
-                confirm('Do you want to play again?');
+                possiblePrise /= attempt;
+                attempt--;
+                inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
+Attempts left: ${attempt}
+Total price: ${price}$
+Possible prize on current attempt: ${possiblePrise}$`);
+                if (inputPocket === pocket) {
+                    price += possiblePrise;
+                    win = confirm(`Congratulation, you won!   Your prize is: ${price}$.
+Do you want to continue?`);
+                    if (win === true) {
+                        continue;
+                    } else {
+                        alert(`Thank you for your participation. Your prize is: ${price}$`);
+                        let again = confirm('Do you want to play again?');
+                        if (again === true) {
+                            break;
+                        } else {
+                            break;
+                        }
+                    }
+                } else {
+                    alert('Thank you for your participation. Your prize is: 0$');
+                    let again = confirm('Do you want to play again?');
+                    if (again === true) {
+                        break;
+                    } else {
+                        break;
+                    }
+                }
             }
         }
+    } else {
+        alert('You did not become a billionaire, but can.');
+        break;
     }
-} else {
-    alert('You did not become a billionaire, but can.');
+
 }
