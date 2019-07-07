@@ -12,7 +12,6 @@ for (round; round < Infinity; round++) {
     let attempt = 3;
     max = max + stepPockets;
     let pocket = parseInt(Math.random() * max);
-    console.log(pocket)
     if (startGame === true) {
         possiblePrise *= round;
         let inputPocket = +prompt(`Choose a roulette pocket number from 0 to ${max}
