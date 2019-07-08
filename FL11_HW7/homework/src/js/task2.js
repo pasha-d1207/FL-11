@@ -1,6 +1,6 @@
 let startGame = confirm('Do you want to play a game?');
-let maxRound = 100000;
-let maxGame = 100000;
+let maxRound = Infinity;
+let maxGame = Infinity;
 
 for (let game = 1; game < maxGame; game++) {
     let price = 0;
