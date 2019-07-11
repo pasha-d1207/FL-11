@@ -1,4 +1,4 @@
-function formatTime(time) {
+ let formatTime = (time) => {
     let days = Math.floor(time / 1440);
     let hour = Math.floor((time - (1440 * days))/60);
     let minute = Math.floor((time - (1440 * days)) - (60 * hour));

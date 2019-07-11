@@ -1,4 +1,4 @@
-function reverseNumber(n) {
+let reverseNumber = (n) => {
     var x = 0;
     if (n > 0) {
         while (n > 0) {
