@@ -108,7 +108,7 @@ function daysBetween(date1, date2) {
 
     let diffMs = date2 - date1;
     let diffDay = diffMs / ms / sec / min / hour;
-    return Math.ceil(diffDay);
+    return Math.round(diffDay);
 }
 
 /* Task 8 */
