@@ -2,6 +2,9 @@ let textContent = ['Find the cat',
     "Prepare cat's carry",
     'Bathe a cat']
 let max_item = 10;
+let position_input = 4;
+let reverse_position_input = 2;
+let middle = 2;
 // create_element
 
 let rootNode = document.getElementById('root');
@@ -78,6 +81,7 @@ i_add_box.addEventListener('click', function () {
             icon_delete.classList.add('material-icons', 'md-dark', 'right');
 
             span.textContent = input.value;
+            li.draggable = true;
             ol.appendChild(li)
             li.appendChild(check_box_outline_blank);
             li.appendChild(span);
@@ -96,7 +100,7 @@ i_add_box.addEventListener('click', function () {
     remove();
     done();
     rewrite();
-    save()
+    save();
 
 })
 
@@ -104,7 +108,7 @@ getLi();
 remove();
 done();
 rewrite();
-save()
+save();
 
 
 function remove() {
@@ -163,12 +167,12 @@ function save() {
             for (let i = 0; i < item.parentNode.children.length; i++) {
                 item.parentNode.children[i].classList.remove('none_display');
             }
-            if (item.parentNode.children[4].value !== '') {
-                item.parentNode.children[1].textContent = item.parentNode.children[4].value;
-                item.parentNode.children[item.parentNode.children.length - 2].remove();
+            if (item.parentNode.children[position_input].value !== '') {
+                item.parentNode.children[1].textContent = item.parentNode.children[position_input].value;
+                item.parentNode.children[item.parentNode.children.length - reverse_position_input].remove();
                 item.parentNode.children[item.parentNode.children.length - 1].remove();
             } else {
-                item.parentNode.children[item.parentNode.children.length - 2].remove();
+                item.parentNode.children[item.parentNode.children.length - reverse_position_input].remove();
                 item.parentNode.children[item.parentNode.children.length - 1].remove();
             }
         });
@@ -176,4 +180,50 @@ function save() {
 }
 
 
+function actionTarget(e) {
+    let target = e.target;
+    if (target.hasAttribute('draggable')) {
+        return target;
+    }
+}
 
+let draggableElement = null;
+let dropPosition = null;
+
+ol.addEventListener('dragstart', function (e) {
+    draggableElement = actionTarget(e);
+    if (!draggableElement) {
+        return;
+    }
+}, false);
+
+ol.addEventListener('dragend', function () {
+    draggableElement.style.opacity = '';
+});
+
+ol.addEventListener('dragover', function (e) {
+    e.preventDefault();
+    let dropPosition = actionTarget(e);
+    if (!dropPosition) {
+        return;
+    }
+});
+
+ol.addEventListener('dragleave', function (e) {
+    let dropPosition = actionTarget(e);
+    if (!dropPosition) {
+        return;
+    }
+});
+
+ol.addEventListener('drop', function (e) {
+    dropPosition = actionTarget(e);
+    if (!dropPosition) {
+        return;
+    }
+    e.preventDefault();
+    let rect = dropPosition.getBoundingClientRect();
+    let midline = rect.top + (rect.bottom - rect.top) / middle;
+    let afterDropPosition = midline <= e.clientY ? dropPosition.nextSibling : dropPosition;
+    ol.insertBefore(draggableElement, afterDropPosition);
+});
