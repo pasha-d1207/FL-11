@@ -1,0 +1,68 @@
+#root {
+  margin: 30px;
+}
+
+h1,
+h3 {
+  text-align: center;
+  color: #06b6fa;
+}
+
+span {
+  margin: 0 20px;
+}
+
+input {
+  padding: 20px;
+}
+
+input.width {
+  width: 85%;
+}
+
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+#blue_line {
+  width: 100%;
+  height: 10px;
+  background: #e2f1fd;
+}
+
+i {
+  vertical-align: middle;
+}
+
+.pointer-events {
+  pointer-events: none;
+}
+
+i:hover {
+  cursor: pointer;
+}
+.material-icons.md-dark {
+  color: #06b6fa;
+}
+
+.material-icons.md-gray {
+  color: #c6d0d7;
+}
+
+.right {
+  float: right;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+  margin: 0 25px;
+}
+
+.none_display {
+  display: none;
+}
+
+.no_padding {
+  padding: 0;
+}
